@@ -3,47 +3,60 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answersDiv = document.getElementById('answer-buttons')
+const timerEl = document.getElementById('timer');
 let shuffledQuestions;
 let currentQuestionIndex;
 
-   startButton.addEventListener('click' , startQuiz)
+let time = 75;
+let timer;
 
-   function startQuiz() {
-        console.log('started')
-        startButton.classList.add('hide')
-        shuffledQuestions= questions.sort(() => Math.random()  - .5)
-console.log(shuffledQuestions)
-        currentQuestionIndex = 0;
-        questionContainerElement.classList.remove('hide');
-        setNextQuestion()
-   }
+startButton.addEventListener('click', startQuiz)
+
+function startQuiz() {
+    console.log('started')
+    startButton.classList.add('hide')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    console.log(shuffledQuestions)
+    currentQuestionIndex = 0;
+    questionContainerElement.classList.remove('hide');
+    setNextQuestion()
+}
 
 function setNextQuestion() {
     console.log('setNextQuestion')
-  //  resetState()
+    //  resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
+    timer = setInterval(timer, 1000)
+
     console.log('QUESTION', question)
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
-        const button = document.createElement('button')
+        const answerButton = document.createElement('button')
         console.log(answer)
-        button.innerText = answer
-        button.classList.add('btn');
-        answersDiv.append(button)
+        answerButton.innerText = answer
+        answerButton.classList.add('btn');
+        answersDiv.append(answerButton)
         if (answer.correct) {
-            button.dataset.correct = answer.correct
+            answerButton.dataset.correct = answer.correct
         }
-           // button.addEventListener(appendChild(button))
-        })
+        answerButton.addEventListener("click",)
     }
 
+ ,() => { }('timer') 
+    time --);
+    console.log(time)
+    timerEl.innerText = time;
+}
+//add a stop timer function when the count reaches 0
+//end quiz when timer stops at 0
+
+//function setTimeout()
 
 
-
-
+window.setTimeout
 
 function selectAnswer(e) {
 
@@ -56,10 +69,10 @@ let questions = [
         correctAnswer: "two"
     },
     {
-        question: 'What is ann css?',
-        answers: ["one", "two", "three", "four"],
-        correctAnswer: "two"
+        question: 'What is css?',
+        answers: ["Christmas Santa Songs", "Cascading Style Sheets", "three", "four"],
+        correctAnswer: "Cascading Style Sheets"
     }
 
 ]
-
+)}
